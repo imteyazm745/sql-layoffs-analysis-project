@@ -1,49 +1,64 @@
 # 📊 Layoff Trends Analysis Using SQL
 
-This project is an end-to-end data analysis of global layoff trends using SQL. It focuses on data cleaning and exploratory data analysis (EDA) using real-world data sourced from Kaggle.
+This project is a complete end-to-end **data analysis** of global tech layoffs using SQL. It demonstrates practical skills in **data cleaning**, **data transformation**, and **exploratory data analysis (EDA)** using a real-world dataset sourced from [Kaggle](https://www.kaggle.com/datasets/swaptr/layoffs-2022).
+
+The analysis focuses on understanding global layoff patterns from **COVID-19 through the present**, uncovering trends by year, industry, geography, and company.
 
 ---
 
-## 📁 Project Structure
+## 📦 Dataset Information
 
-- `layoffs.csv` – Original raw dataset downloaded from Kaggle  
-- `Data_Cleaning_project.sql` – SQL scripts to clean, standardize, and prepare the data  
-- `EDA_practice.sql` – SQL queries for exploratory data analysis and insight generation
+- **Source**: [Kaggle - Tech Layoffs](https://www.kaggle.com/datasets/swaptr/layoffs-2022)
+- **Description**: Real-time data of tech industry layoffs collected since the start of COVID-19. Includes information like company name, total laid off, percentage of workforce affected, industry, country, dates, and more.
 
 ---
 
-## 🔧 Tools & Technologies
+## 🗂️ Project Structure
 
-- MySQL (SQL)
-- Kaggle Dataset
-- Excel (used for initial checks)
+- `layoffs.csv` – Original raw dataset from Kaggle  
+- `Data_Cleaning_project.sql` – SQL scripts for cleaning and preparing the data  
+- `EDA_practice.sql` – SQL queries for performing exploratory data analysis and generating insights  
+
+---
+
+## 🛠️ Tools & Technologies
+
+- **MySQL** – For writing and executing SQL queries  
+- **Excel** – Used for preliminary checks and validations  
+- **Kaggle** – Data source for real-world relevance  
 
 ---
 
 ## 🧹 Data Cleaning Highlights
 
-- Removed NULL and irrelevant values
-- Standardized inconsistent formatting
-- Trimmed extra spaces and fixed company/location names
-- Removed duplicate rows
-- Converted date formats for time-based analysis
+The raw dataset had several inconsistencies that needed to be cleaned before analysis:
+
+- Removed irrelevant rows and entries with missing essential data (`NULL` values)
+- Standardized inconsistent entries (e.g., company names, country formats)
+- Removed extra whitespace and formatting issues in text columns
+- Converted and formatted dates using SQL functions
+- Removed duplicate rows for accurate aggregation
+- Created a cleaned version of the dataset for analysis
 
 ---
 
 ## 📈 Key Insights from EDA
 
-- Most layoffs occurred in 2022 across multiple tech industries
-- US-based companies were most affected in terms of volume
-- Identified top 10 companies with highest layoffs
-- Monthly and yearly layoff trends uncovered using SQL date functions
-- Sector-wise comparison of layoffs and total employees affected
+Using SQL queries, I uncovered several trends:
+
+- 🔺 **2022** saw the highest number of layoffs, peaking during economic downturns post-COVID
+- 🌎 **US-based companies** contributed the most to global layoffs
+- 🏢 Identified the **Top 10 companies** with the largest number of laid-off employees
+- 🗓️ Discovered **monthly and yearly layoff trends** using SQL `DATE_FORMAT()` and grouping
+- 💼 Layoffs were most common in **Tech, Consumer, and Finance** sectors
+- 📊 Correlation found between company size and layoff volume
 
 ---
 
-## 📊 Sample Queries Used
+## 💻 Sample SQL Queries
 
 ```sql
--- Total layoffs per company
+-- Top 10 companies by total number of layoffs
 SELECT company, SUM(total_laid_off) AS total_layoffs
 FROM layoffs_cleaned
 GROUP BY company
